@@ -1,38 +1,56 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+}
+
+.Jewel-table {
+  min-width: 300px;
+  min-height: 300px;
+  backgroud-color: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Jewel-row {
+  /*height: 100%;*/
+  /*width: 100%;*/
+  display: flex;
+  align-items: normal;
+  justify-content: normal;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Jewel-row > div {
+  font-size: 10vh;
+  margin: .1em;
+  padding: .3em;
+  border-radius: 3px;
+  flex: 1;
+}
+
+.Jewel-cell-1 {
+  background-color: palevioletred;
+}
+.Jewel-cell-2 {
+  background-color: orangered;
+}
+.Jewel-cell-3 {
+  background-color: goldenrod;
+}
+.Jewel-cell-4 {
+  background-color: seagreen;
+}
+.Jewel-cell-5 {
+  background-color: dodgerblue;
+}
+.Jewel-cell-6 {
+  background-color: fuchsia;
+}
+.Jewel-cell-7 {
+  background-color: cyan;
 }
