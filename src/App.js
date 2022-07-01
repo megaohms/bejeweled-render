@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import './App.css';
-import { jewelDataDefault, generateGrid } from './generateJewelData'
+import { generateGrid } from './generateJewelData'
 
 function App() {
     return (
