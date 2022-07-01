@@ -12,10 +12,7 @@ function App() {
 
 
 function JewelTable() {
-    // const [jewelData, updateJewelData] = useState(jewelDataDefault)
-    const newData = generateGrid()
-    const jewelData = newData
-    // updateJewelData(newData)
+    const jewelData = generateGrid()
     return (
         <div className="Jewel-table">
         {
