@@ -21,7 +21,8 @@ export function generateGrid() {
     jewelData.forEach((row, yIdx) => {
         row.forEach((cell, xIdx) => {
             let candidateCell = cell
-            while (isInvalidHorizontalTrio(candidateCell, xIdx, row) ||
+            while (checkIfDefault(cell) ||
+                isInvalidHorizontalTrio(candidateCell, xIdx, row) ||
                 isInvalidVerticalTrio(candidateCell, yIdx, xIdx, jewelData)) {
                 candidateCell = generateJewel()
             }
@@ -31,10 +32,14 @@ export function generateGrid() {
     return jewelData
 }
 
+function checkIfDefault(cell) {
+    // if it's a default, it's invalid
+    return cell === 0
+}
+
 // find so parent function can compare two directions
 export function isInvalidHorizontalTrio(cell, xIdx, row) {
-    return checkIfDefault(cell) ||
-        checkTwoToRightMatch(cell, xIdx, row) ||
+    return checkTwoToRightMatch(cell, xIdx, row) ||
         checkTwoToLeftMatch(cell, xIdx, row)
 }
 
@@ -49,25 +54,20 @@ function checkTwoToLeftMatch(cell, xIdx, row) {
 }
 
 export function isInvalidVerticalTrio(cell, yIdx, xIdx, matrix) {
-    return checkIfDefault(cell) ||
-        checkTwoBelowMatch(cell, xIdx, yIdx, matrix) ||
-        checkTwoAboveMatch(cell, xIdx, yIdx, matrix)
+    return checkTwoBelowMatch(cell, yIdx, xIdx, matrix) ||
+        checkTwoAboveMatch(cell, yIdx, xIdx, matrix)
 }
 
-function checkIfDefault(cell) {
-    // if it's a default, it's invalid
-    return cell === 0
-}
 
 // todo: see if better syntax for safe nested array access
-function checkTwoBelowMatch(cell, xIdx, yIdx, matrix) {
+function checkTwoBelowMatch(cell, yIdx, xIdx, matrix) {
     return matrix[yIdx + 1] &&
         cell === matrix[yIdx + 1][xIdx] &&
         matrix[yIdx + 2] &&
         cell === matrix[yIdx + 2][xIdx]
 }
 
-function checkTwoAboveMatch(cell, xIdx, yIdx, matrix) {
+function checkTwoAboveMatch(cell, yIdx, xIdx, matrix) {
     return matrix[yIdx - 1] &&
         cell === matrix[yIdx - 1][xIdx] &&
         matrix[yIdx - 2] &&
