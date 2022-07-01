@@ -1,7 +1,7 @@
 
 const numberOfJewelTypes = 7
 
-export const jewelDataDefault = [
+export let jewelData = [
     [0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0],
@@ -18,16 +18,17 @@ function generateJewel() {
 
 // generate new grid instead of referencing original
 export function generateGrid() {
-    return jewelDataDefault.map((row, yIdx) => {
-        return row.map((cell, xIdx) => {
+    jewelData.forEach((row, yIdx) => {
+        row.forEach((cell, xIdx) => {
             let candidateCell = cell
             while (isInvalidHorizontalTrio(candidateCell, xIdx, row) ||
-                isInvalidVerticalTrio(candidateCell, yIdx, xIdx, jewelDataDefault)) {
+                isInvalidVerticalTrio(candidateCell, yIdx, xIdx, jewelData)) {
                 candidateCell = generateJewel()
             }
-            return candidateCell
+            jewelData[yIdx][xIdx] = candidateCell
         })
     })
+    return jewelData
 }
 
 // find so parent function can compare two directions
