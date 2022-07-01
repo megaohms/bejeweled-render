@@ -1,30 +1,26 @@
+import { useState } from 'react'
 import './App.css';
+import { jewelDataDefault, generateGrid } from './generateJewelData'
 
-const jewelDataSample = [
-    [1,2,3,4,5,6,7,1],
-    [4,5,6,7,1,1,2,3],
-    [3,4,5,6,7,7,1,2],
-    [2,3,4,5,6,7,1,1],
-    [1,2,3,4,5,6,7,1],
-    [4,5,6,7,1,1,2,3],
-    [3,4,5,6,7,7,1,2],
-    [2,3,4,5,6,7,1,1],
-]
 function App() {
     return (
     <div className="App">
-        <JewelTable jewelData={jewelDataSample}/>
+        <JewelTable />
     </div>
   );
 }
 
 
-function JewelTable({ jewelData }) {
+function JewelTable() {
+    // const [jewelData, updateJewelData] = useState(jewelDataDefault)
+    const newData = generateGrid()
+    const jewelData = newData
+    // updateJewelData(newData)
     return (
         <div className="Jewel-table">
         {
-            jewelData?.map(jewelDataRow =>
-                <JewelRow rowArray={jewelDataRow} />
+            jewelData?.map((jewelDataRow, yIdx) =>
+                <JewelRow rowArray={jewelDataRow} key={yIdx}/>
             )
         }
         </div>
@@ -34,8 +30,8 @@ function JewelTable({ jewelData }) {
 function JewelRow({ rowArray }) {
     return <div className="Jewel-row">
         {
-            rowArray?.map(number =>
-                <JewelCell number={number}>{number}</JewelCell>
+            rowArray?.map((jewelNumber, jewelIdx) =>
+                <JewelCell number={jewelNumber} key={jewelIdx} />
             )
         }
     </div>
