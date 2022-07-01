@@ -59,7 +59,6 @@ export function isInvalidVerticalTrio(cell, yIdx, xIdx, matrix) {
 }
 
 
-// todo: see if better syntax for safe nested array access
 function checkTwoBelowMatch(cell, yIdx, xIdx, matrix) {
     return matrix[yIdx + 1] &&
         cell === matrix[yIdx + 1][xIdx] &&
