@@ -29,3 +29,6 @@ The build is minified and the filenames include the hashes.\
 - Mapping vs iterating and replacing
 - `isInvalid` vs `isValid` naming conventions
 - testing logic for validating neighbors
+- feedback cycles (visual/manual vs automated)
+- functional programming
+- 
